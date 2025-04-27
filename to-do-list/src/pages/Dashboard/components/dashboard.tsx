@@ -1,4 +1,5 @@
 import { Button, Paper, Table, TableBody, TableCell, TableHead, TableRow } from "@mui/material"
+import CreateTask from "./create"
 
 
 
@@ -10,7 +11,7 @@ function Dashboard() {
                 To Do list
             </h1>
             <div>
-                <Button>Create tasks</Button>
+                <Button onClick={() => CreateTask(true)}>Create tasks</Button>
             </div>
             <div>
                 <Paper sx={{ height: '100%', width: '100%' }}>
