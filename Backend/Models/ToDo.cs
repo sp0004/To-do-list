@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ToDo.Models;
 
-public class ToDo
+public class ToDoItems
 {
     [Required]
     public string TaskName { get; set; } = "";

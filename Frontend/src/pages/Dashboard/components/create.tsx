@@ -1,5 +1,5 @@
 import { Box, Modal, Typography } from "@mui/material"
-import { useState } from "react"
+
 import '../../../styles/styles.css'
 
 const style = {
@@ -16,17 +16,18 @@ const style = {
     pb: 3,
   };
 
+interface createTask {
+    open:boolean;
+    isOpen: (open:boolean) => void
+}
 
-function CreateTask(open:boolean) {
-    const [Open, isOpen] = useState(open)
-    const [close, isClosed] = useState(false)
-    
- 
-    console.log("kkk")
+
+const CreateTask = ({open,isOpen}:createTask) =>  {
+    console.log("kkk:"+ open)
     return (
         <Modal
-            open={Open}
-            onClose={() => isClosed(!close)}
+            open={open}
+            onClose={() => isOpen(!open)}
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description">
             <Box sx={style}>

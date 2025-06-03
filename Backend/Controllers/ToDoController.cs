@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using ToDo.Models;
 
 namespace Backend.Controllers;
 
@@ -14,6 +15,11 @@ public class ToDoController : ControllerBase
         _logger = logger;
     }
 
-  
+    [HttpGet(Name = "getAllTasks")]
+    public IEnumerable<ToDoItems> getAllTasks()
+    {
+        var taskList = new ToDoItems();
+        return (IEnumerable<ToDoItems>)taskList;
+    }
 
 }
