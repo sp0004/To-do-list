@@ -7,3 +7,8 @@ How to create vite project  ::  npm create vite@latest
   npm run dev 
 2. http://localhost:5173/ is where the app is present
 3. I am using material UI for the design
+
+===== Running the modules =====
+1. Do cd Frontend
+2. run npm run dev 
+3.  http://localhost:5173/ 
