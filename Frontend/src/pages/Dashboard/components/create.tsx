@@ -1,44 +1,69 @@
-import { Box, Modal, Typography } from "@mui/material"
+import { Box, Dialog, DialogTitle, Button, FormControl, InputLabel, Input, OutlinedInput, DialogContent, Stack, FormHelperText, Grid, Typography, TextField } from "@mui/material"
+import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 
 import '../../../styles/styles.css'
+import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 
-const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    pt: 2,
-    px: 4,
-    pb: 3,
-  };
+
 
 interface createTask {
-    open:boolean;
-    isOpen: (open:boolean) => void
+    open: boolean;
+    isOpen: (open: boolean) => void
 }
 
 
-const CreateTask = ({open,isOpen}:createTask) =>  {
-    console.log("kkk:"+ open)
+const CreateTask = ({ open, isOpen }: createTask) => {
+    console.log("kkk:" + open)
     return (
-        <Modal
-            open={open}
-            onClose={() => isOpen(!open)}
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description">
-            <Box sx={style}>
-                <Typography id="modal-modal-title" variant="h6" component="h2">
-                    Text in a modal
-                </Typography>
-                <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                    Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-                </Typography>
+        <Dialog open={open} onClose={() => isOpen(!open)} maxWidth="lg" >
+            <DialogTitle>Create Task</DialogTitle>
+            <DialogContent>
+                <FormControl>
+                    <Grid container spacing={2}> {/* Container for the side-by-side elements */}
+                        <Grid> {/* Item 1 occupying half the width */}
+                            <Typography>Task Name:</Typography>
+                        </Grid>
+                        <Grid> {/* Item 2 occupying the other half */}
+                            <TextField id="taskName" label="Input" />
+                        </Grid>
+                    </Grid>
+                    <Grid container spacing={2}> {/* Container for the side-by-side elements */}
+                        <Grid> {/* Item 1 occupying half the width */}
+                            <Typography>Task Desciption:</Typography>
+                        </Grid>
+                        <Grid> {/* Item 2 occupying the other half */}
+                            <TextField id="taskDesciption" label="Input" />
+                        </Grid>
+                    </Grid>
+                    <Grid container spacing={2}> {/* Container for the side-by-side elements */}
+                        <Grid> {/* Item 1 occupying half the width */}
+                            <Typography>Due Date:</Typography>
+                        </Grid>
+                        <Grid> {/* Item 2 occupying the other half */}
+                            <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                <DemoContainer components={['DatePicker']}>
+                                    <DatePicker label="date" />
+                                </DemoContainer>
+                            </LocalizationProvider>
+                        </Grid>
+                    </Grid>
+                    <Grid container spacing={2}> {/* Container for the side-by-side elements */}
+                        <Grid> {/* Item 1 occupying half the width */}
+                            <Typography>Comments:</Typography>
+                        </Grid>
+                        <Grid> {/* Item 2 occupying the other half */}
+                            <TextField id="Comments" label="Input" />
+                        </Grid>
+                    </Grid>
+                </FormControl>
+            </DialogContent>
+            <Box display="flex" justifyContent="center" alignItems="center">
+                <Button>create</Button>
+                <Button>cancel</Button>
             </Box>
-        </Modal>
+
+        </Dialog>
     )
 }
 

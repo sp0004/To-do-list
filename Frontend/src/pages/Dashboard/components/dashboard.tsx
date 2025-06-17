@@ -1,12 +1,21 @@
 import { Button, Paper, Table, TableBody, TableCell, TableHead, TableRow } from "@mui/material"
 import CreateTask from "./create"
-import { useContext, useState } from "react";
+import { useState } from "react";
 
 
 
 function Dashboard() {
-    const list_of_tasks = [{ "task": "first task", "due date": "today" }, { "task": "second task", "due date": "tomorrow" }]
-     const [open, isOpen] = useState(true);
+    const list_of_tasks = [{ "task": "first task", "due_date": "today" }, { "task": "second task", "due_date": "tomorrow" }]
+     const [open, isOpen] = useState(false);
+
+    // Define the handleClick function
+    const handleClick = () => {
+        isOpen(true); // Example: open the create task dialog
+    };
+
+    const handleClose = () => {
+        isOpen(!open)
+    }
 
     return (
         <div>
@@ -14,7 +23,7 @@ function Dashboard() {
                 To Do list
             </h1>
             <div>
-                <Button onClick={() => <CreateTask open={open} isOpen={isOpen}/>}>Create tasks</Button>
+                <Button onClick={handleClick}>Create tasks</Button>
             </div>
             <div>
                 <Paper sx={{ height: '100%', width: '100%' }}>
@@ -30,12 +39,13 @@ function Dashboard() {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {list_of_tasks.map(a => <TableRow><TableCell>{a.task}</TableCell></TableRow>)}
+                            {list_of_tasks.map(a => <TableRow><TableCell>{a.task}</TableCell><TableCell>{a.due_date}</TableCell></TableRow>)}
                         </TableBody>
 
                     </Table>
                 </Paper>
             </div>
+            <CreateTask open={open} isOpen={handleClose} />
         </div>
     )
 }
