@@ -22,4 +22,22 @@ public class ToDoController : ControllerBase
         return (IEnumerable<ToDoItems>)taskList;
     }
 
+    [HttpGet("db-health")]
+    public IActionResult CheckDatabaseConnection([FromServices] ToDoContext context)
+    {
+        try
+        {
+            // Try to query the database
+            var canConnect = context.Database.CanConnect();
+            if (canConnect)
+                return Ok("Database connection successful.");
+            else
+                return StatusCode(500, "Database connection failed.");
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, $"Database connection error: {ex.Message}");
+        }
+}
+
 }
