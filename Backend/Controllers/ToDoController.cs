@@ -9,26 +9,23 @@ public class ToDoController : ControllerBase
 {
 
     private readonly ILogger<ToDoController> _logger;
+    private readonly ToDoContext _context;
 
-    public ToDoController(ILogger<ToDoController> logger)
+    public ToDoController(ILogger<ToDoController> logger, ToDoContext context)
     {
         _logger = logger;
+        _context = context;
     }
 
-    [HttpGet(Name = "getAllTasks")]
-    public IEnumerable<ToDoItems> getAllTasks()
-    {
-        var taskList = new ToDoItems();
-        return (IEnumerable<ToDoItems>)taskList;
-    }
+
 
     [HttpGet("db-health")]
-    public IActionResult CheckDatabaseConnection([FromServices] ToDoContext context)
+    public IActionResult CheckDatabaseConnection()
     {
         try
         {
             // Try to query the database
-            var canConnect = context.Database.CanConnect();
+            var canConnect = _context.Database.CanConnect();
             if (canConnect)
                 return Ok("Database connection successful.");
             else
@@ -38,6 +35,13 @@ public class ToDoController : ControllerBase
         {
             return StatusCode(500, $"Database connection error: {ex.Message}");
         }
-}
+    }
+
+    [HttpGet("get-all-tasks")]
+    public ActionResult<ToDoContext> getAllTheTasks()
+    {
+        return Ok(_context);
+        // return Ok("hell");
+    }
 
 }
