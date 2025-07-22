@@ -10,6 +10,6 @@ public class ToDoContext : DbContext
     }
 
 
-    public DbSet<ToDoItems> ToDoItems { get; set; }
+    public DbSet<ToDoItem> ToDoItems { get; set; }
     
 }

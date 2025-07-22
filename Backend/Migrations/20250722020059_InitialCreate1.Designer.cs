@@ -12,8 +12,8 @@ using ToDo.Models;
 namespace Backend.Migrations
 {
     [DbContext(typeof(ToDoContext))]
-    [Migration("20250721021349_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20250722020059_InitialCreate1")]
+    partial class InitialCreate1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,13 +25,11 @@ namespace Backend.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("ToDo.Models.ToDoItems", b =>
+            modelBuilder.Entity("ToDo.Models.ToDoItem", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                        .HasColumnType("uuid");
 
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("timestamp with time zone");

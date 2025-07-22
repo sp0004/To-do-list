@@ -3,11 +3,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ToDo.Models;
 
-public class ToDoItems
+public class ToDoItem
 {
     [Key]
-    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public int Id { get; set; }
+    public Guid Id { get; set; } = Guid.NewGuid();
     [Required]
     public string TaskName { get; set; } = "";
 
