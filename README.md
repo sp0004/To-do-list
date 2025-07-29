@@ -1,7 +1,12 @@
 # To-do-list
-This is a basic to do list which is build using the following platform
+I am in the process of building an all-in-one list with some additional functionalities
+There are three components 
+1. To-do list that takes care of the task ( in progress)
+2. Money manager ( which tracks your expenses and lets you scan your receipts)
+3.  Journal ( we need some ways to dump our thoughts, why not do it in the same )
+This is a basic to-do list which is built using the following platform
 1. Vite as the frontend package module
-How to create vite project  ::  npm create vite@latest 
+How to create Vite project:  npm create vite@latest 
   cd to-do-list
   npm install
   npm run dev 
