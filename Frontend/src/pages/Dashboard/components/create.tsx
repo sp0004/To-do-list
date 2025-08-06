@@ -1,9 +1,7 @@
-import { Box, Dialog, DialogTitle, Button, FormControl, InputLabel, Input, OutlinedInput, DialogContent, Stack, FormHelperText, Grid, Typography, TextField } from "@mui/material"
-import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
+import { Box, Dialog, DialogTitle, Button, FormControl,  DialogContent,  Grid, Typography, TextField } from "@mui/material"
+import { LocalizationProvider, DatePicker} from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
-import '../../../styles/styles.css'
-import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 
 
 
@@ -42,9 +40,7 @@ const CreateTask = ({ open, isOpen }: createTask) => {
                         </Grid>
                         <Grid> {/* Item 2 occupying the other half */}
                             <LocalizationProvider dateAdapter={AdapterDayjs}>
-                                <DemoContainer components={['DatePicker']}>
-                                    <DatePicker label="date" />
-                                </DemoContainer>
+                                <DatePicker label="date" />
                             </LocalizationProvider>
                         </Grid>
                     </Grid>
